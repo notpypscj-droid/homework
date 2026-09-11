@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แฟ้มผลงาน - Piyapan Sucharajit</title>
+    <style>
+        /* กำหนดธีมสี */
+        :root {
+            --gradient-orange: linear-gradient(135deg, #FF7E5F, #FEB47B);
+            --bg-light: #f4f7f6;
+            --text-main: #2c3e50;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* ป้องกันแถบเลื่อนซ้อนกัน */
+        }
+
+        /* ลูกเล่นแอนิเมชันตอนเปิดเว็บ */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* แถบหัวข้อ */
+        .header {
+            background: var(--gradient-orange);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 126, 95, 0.4);
+            z-index: 10;
+            animation: slideDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            margin: 5px 0 10px 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* ปุ่มกดที่หัวข้อ */
+        .btn-header {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.6);
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-header:hover {
+            background-color: white;
+            color: #FF7E5F;
+            border-color: white;
+        }
+
+        /* พื้นที่วาง PDF */
+        .pdf-wrapper {
+            flex-grow: 1;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            animation: fadeIn 1s ease-out 0.3s both; /* หน่วงเวลาเล็กน้อยให้หัวข้อลงมาก่อน */
+        }
+
+        .pdf-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background-color: white;
+            border: none;
+            overflow: hidden;
+        }
+
+        /* ส่วนแสดงผลสำรอง (สำหรับมือถือ) */
+        .fallback-msg {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            padding: 40px 20px;
+            background-color: white;
+        }
+
+        .fallback-msg h2 {
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .fallback-msg p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+
+        /* ปุ่มกดหลัก */
+        .btn-primary {
+            background: var(--gradient-orange);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 126, 95, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 126, 95, 0.6);
+        }
+
+        /* ปรับหน้าจอสำหรับมือถือ */
+        @media (max-width: 768px) {
+            .pdf-wrapper {
+                padding: 0; /* เอากรอบออกให้ PDF กว้างเต็มจอ */
+            }
+            .pdf-container {
+                border-radius: 0;
+            }
+            .header h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- แถบหัวข้อ -->
+    <div class="header">
+        <h1>✨ ผลงานการใช้ Prompt ในแง่ต่างๆ</h1>
+        <p>จัดทำโดย: Piyapan Sucharajit</p>
+        <a href="my-work.pdf" class="btn-header" target="_blank">เปิดดูแบบเต็มจอ ↗</a>
+    </div>
+
+    <!-- ส่วนแสดงผล PDF -->
+    <div class="pdf-wrapper">
+        <!-- !!! อย่าลืมเปลี่ยน my-work.pdf เป็นชื่อไฟล์ของคุณ !!! -->
+        <object data="my-work.pdf" type="application/pdf" class="pdf-container">
+            
+            <!-- กรณีเบราว์เซอร์ไม่รองรับ (เช่นในมือถือบางรุ่น) -->
+            <div class="fallback-msg">
+                <h2>📱 ไม่สามารถแสดงผล PDF ในหน้านี้ได้</h2>
+                <p>ระบบตรวจพบว่าคุณอาจกำลังใช้งานผ่านสมาร์ทโฟน<br>กรุณากดปุ่มด้านล่างเพื่อเปิดอ่านแฟ้มผลงาน</p>
+                <a href="my-work.pdf" class="btn-primary" target="_blank">เปิดแฟ้มผลงาน PDF</a>
+            </div>
+
+        </object>
+    </div>
+
+</body>
+</html>
