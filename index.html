@@ -3,54 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>การบ้าน: ทักทายอาจารย์</title>
+    <title>แฟ้มผลงาน PDF - ปิยะพันธ์ ปิยะพันธ์</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f8ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        body, html {
             margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background-color: #fdfbf7;
         }
-        .card {
-            background-color: #ffffff;
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .header {
+            background-color: #e67e22; /* ธีมสีส้ม */
+            color: white;
+            padding: 15px 20px;
             text-align: center;
-            max-width: 400px;
-            width: 90%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
         }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 15px;
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
         }
-        p {
-            color: #555555;
-            line-height: 1.6;
-            margin-bottom: 10px;
+        .header a {
+            color: #fff3e0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #fff3e0;
         }
-        .footer {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid #eeeeee;
-            font-size: 0.9em;
-            color: #888888;
+        .header a:hover {
+            color: white;
+        }
+        .pdf-container {
+            flex-grow: 1; /* ให้ PDF ขยายเต็มพื้นที่ที่เหลือ */
+            width: 100%;
+            border: none;
+        }
+        .fallback-msg {
+            text-align: center;
+            padding: 40px 20px;
+            color: #333;
+        }
+        .fallback-msg a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #e67e22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>สวัสดีครับ อาจารย์! 👋</h1>
-        <p>นี่คือหน้าเว็บไซต์แรกที่สร้างขึ้นเพื่อส่งการบ้านครับ</p>
-        <p>เว็บไซต์นี้เขียนด้วย HTML และ CSS เบื้องต้น และนำมาโฮสต์ไว้บน <strong>GitHub Pages</strong></p>
-        
-        <div class="footer">
-            <strong>จัดทำโดย:</strong> Piyapan Sucharajit <br>
-            <strong>รหัสนักศึกษา:</strong> 2610717302029
-        </div>
+    
+    <div class="header">
+        <h1>ผลงานการใช้ Prompt ในแง่ต่างๆ</h1>
+        <!-- ปุ่มสำรอง กรณีเปิดดูในมือถือ -->
+        <a href="my-work.pdf" target="_blank">เปิดดูไฟล์ PDF แบบเต็มจอ / ดาวน์โหลด</a>
     </div>
+
+    <!-- ส่วนของการฝังไฟล์ PDF -->
+    <!-- !!! จุดที่ต้องแก้ไข: เปลี่ยนคำว่า my-work.pdf ให้เป็นชื่อไฟล์ PDF ของคุณจริงๆ !!! -->
+    <object data="my-work.pdf" type="application/pdf" class="pdf-container">
+        
+        <!-- ข้อความนี้จะแสดงขึ้นมา ถ้าเปิดในมือถือหรือเบราว์เซอร์ที่ไม่รองรับการฝัง PDF -->
+        <div class="fallback-msg">
+            <h2>เบราว์เซอร์ของคุณไม่รองรับการแสดงผล PDF ในหน้าเว็บ</h2>
+            <p>แต่ไม่ต้องห่วง คุณสามารถกดปุ่มด้านล่างเพื่อเปิดอ่านได้เลยครับ</p>
+            <a href="my-work.pdf" target="_blank">คลิกเพื่อเปิดไฟล์ PDF</a>
+        </div>
+
+    </object>
+
 </body>
 </html>
